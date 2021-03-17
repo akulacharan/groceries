@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title %} About {% endblock %}
+{% block body %}
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-3">My-Basket</h1>
+      <p>My-Basket is an Indian online grocery delivery service. The company primarily delivers grocery goods found in convenience stores, home essentials and food supplies to its customers.  </p>
+      <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    </div>
+  </div>
+
+    <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Charan teja</h2>
+        <p>Chief executive who take cares all of our services online and offline</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Chief executive officer &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Bavani prasad</h2>
+        <p>Data analyst who frequently checks the database,for the customer satisfaction.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Data-Analyst &raquo;</a></p>
+      </div>
+      <div class="col-md-4">
+        <h2>Heshritha</h2>
+        <p>Receptionist who manages all of your queries about booking an order.</p>
+        <p><a class="btn btn-secondary" href="#" role="button">Receptionist &raquo;</a></p>
+      </div>
+    </div>
+
+    <hr>
+
+  </div> <!-- /container --> <!-- /container -->
+
+</main>
+{% endblock %}
+
+{% block js%}
+<script>
+  cart = localStorage.getItem('cart')
+  cart = JSON.parse(localStorage.getItem('cart'));
+  console.log(cart);
+  var sum = 0;
+  for(var item in cart){
+    sum = sum + cart[item][0]
+    //console.log(sum);
+  }
+  document.getElementById('cart').innerHTML = sum;
+  </script>
+{% endblock%}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %} Contact {% endblock %}
+{% block body %}
+<div class="container">
+<div class="jumbotron">
+  <h1 class="display-4">Contact Us</h1>
+  <p class="lead">Share your queries with us!</p>
+  <hr class="my-4">
+  <form method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" name="name" id="name"  placeholder="Enter name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input type="email" class="form-control" name="email" id="email"  placeholder="Enter email" required>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input type="tel" class="form-control" name="phone" id="phone"  placeholder="Enterphone" required>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">Description</label>
+      <textarea class="form-control" name="desc" id="exampleFormControlTextarea1" rows="5" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+    </div>
+
+
+</form>
+
+
+</div>
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+  {% if thanks %}
+  alert('Thanks for your feedback');
+  document.location="/";
+  {% endif %}
+ </script>
+{% endblock %}

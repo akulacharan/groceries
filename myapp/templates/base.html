@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Home {% endblock %}</title>
+    <style>
+      {% block css %}
+
+      body .carousel-control-prev-icon,
+          body .carousel-control-next-icon{
+          border : solid black 1px;
+          padding:10px;
+          background-color: gray;
+          }
+
+     .carousel-indicators li{
+          background-color: blue;
+          }
+        .carousel-indicators .active {
+          background-color: blue;
+            }
+
+     .carousel {
+      margin: 1.5rem;
+    }
+    .carousel-inner {
+      height: auto;
+    }
+
+    .carousel-control-prev {
+      margin-left: -120px;
+    }
+
+    .carousel-control-next {
+      margin-right: -120px;
+    }
+    body .carousel-indicators{
+          bottom: auto;
+          }
+
+    .col-md-3 img{
+           width:284px;
+           height:280px;
+    }
+    .container-fluid{
+      zoom:80%;
+    }
+
+
+
+ {% endblock %}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<!--<img style="width:30px;height:30px;" src="{% static 'cart.png' %}"> -->
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"> My-Basket <img style="width:25px;height:25px;" src="{% static 'cart.png' %}"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+      </li><li class="nav-item">
+        <a class="nav-link " href="{% url 'AboutUs' %}" >About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'TrackingStatus' %}">Tracker</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'contactUs' %}" >Contact US</a>
+      </li>
+
+
+
+
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0" method="get" action="{% url 'Search' %}">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" name="search" id="search">
+      <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+
+     <button type="button" data-html="true" id="popover" class="btn btn-secondary mx-2" data-container="body" data-toggle="popover" data-placement="bottom" data-content="">
+          <img  style="width:30px;height:30px;" id="cart-icon" src="{% static 'cart.png' %}"><span style="color:white;background-color:red;border-radius:90%;" id="cart">0</span>
+     </button>
+  </div>
+</nav>
+
+{% block body %}
+{% endblock %}
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+</body>
+{% block js %}
+<script>
+   console.log('hi cherry');
+   // find-out 'cart' from local storage
+
+    cart = localStorage.getItem('cart')
+  cart = JSON.parse(localStorage.getItem('cart'));
+  console.log(cart);
+  var sum = 0;
+  for(var item in cart){
+    sum = sum + cart[item][0]
+    //console.log(sum);
+  }
+  document.getElementById('cart').innerHTML = sum;
+
+
+
+    // Add pop-over to cart
+
+    $('#popover').popover();
+    document.getElementById('popover').setAttribute('data-content','<h6>This is your Cart</h6>');
+</script>
+
+{% endblock %}
+</html>
