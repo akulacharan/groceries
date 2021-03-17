@@ -20,7 +20,8 @@ The pop over of the cart after adding items to cart
 
 This is the checkout page in which user can add address for delivery .
 
-![Uploading Checkout page.jpg…]()
+![Checkout page](https://user-images.githubusercontent.com/61114770/111420423-377c0300-8711-11eb-9c15-1d2dd0764232.jpg)
+
 
 
 If the pament page is correctly integrated with the paytm developer account with your own merchant key i will looks looke this.
